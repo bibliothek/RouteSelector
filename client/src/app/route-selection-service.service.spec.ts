@@ -17,4 +17,18 @@ describe('RouteSelectionServiceService', () => {
     const route = service.getRoute(location);
     expect(route).toBeDefined();
   });
+
+  it('should return a route where the given location is the equal to the start', () => {
+    const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
+    const location = new Location();
+    const route = service.getRoute(location);
+    expect(route.start).toEqual(location);
+  });
+  
+  it('should return a route with a destination', () => {
+    const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
+    const location = new Location();
+    const route = service.getRoute(location);
+    expect(route.destination).toBeDefined();
+  });
 });
