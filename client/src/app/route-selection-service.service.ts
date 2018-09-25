@@ -8,11 +8,16 @@ import { Location } from './location';
 })
 export class RouteSelectionServiceService implements IRouteSelectionService {
 
-  getRoute(start: Location): Route {
+  getRoute(start: Location): Route;
+  getRoute(start: Location, destination: Location): Route;
+  getRoute(start: Location, destination?: Location): Route {
     const retVal = new Route();
     retVal.start = new Location();
     retVal.destination = new Location();
     return retVal;
   }
+
+
   constructor() { }
+
 }

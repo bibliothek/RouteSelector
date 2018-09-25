@@ -24,6 +24,15 @@ describe('RouteSelectionServiceService', () => {
     const route = service.getRoute(location);
     expect(route.start).toEqual(location);
   });
+
+  it('should return a route where start and destination match the passed locations', () => {
+    const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
+    const start = new Location();
+    const destination = new Location();
+    const route = service.getRoute(start, destination);
+    expect(route.start).toEqual(start);
+    expect(route.destination).toEqual(destination);
+  });
   
   it('should return a route with a destination', () => {
     const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
