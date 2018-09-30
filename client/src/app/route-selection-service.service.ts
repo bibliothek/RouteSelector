@@ -32,7 +32,6 @@ export class RouteSelectionServiceService implements RouteSelectionService {
     return this.routeSelector.selectRoute(filteredRoutes);
   }
 
-
   constructor(routeConfig: RouteConfig, routeSelector: RouteSelector) {
     this.routeConfig = routeConfig;
     this.routeSelector = routeSelector;

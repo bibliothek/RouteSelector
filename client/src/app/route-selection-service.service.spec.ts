@@ -5,6 +5,7 @@ import { Location } from './location';
 import { InMemoryRouteConfig } from './in-memory-route-config';
 import { Route } from './route';
 import { IndexRouteSelector } from './index-route-selector';
+import { RandomRouteSelector } from './random-route-selector';
 
 describe('RouteSelectionServiceService', () => {
 
@@ -20,7 +21,7 @@ describe('RouteSelectionServiceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [{
-        provide: RouteSelectionServiceService, useValue: new RouteSelectionServiceService(routeConfig, new IndexRouteSelector(0))
+        provide: RouteSelectionServiceService, useValue: new RouteSelectionServiceService(routeConfig, new RandomRouteSelector())
       }]
     });
   });
