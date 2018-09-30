@@ -7,13 +7,17 @@ import { Route } from './route';
 
 describe('RouteSelectionServiceService', () => {
 
-const startLocation = new Location("start location");
-const endLocation = new Location("end location");
-const routeA = new Route(startLocation, endLocation, "route A")
+const startLocation1 = new Location("start location 1");
+const endLocation1 = new Location("end location 1");
+const routeA = new Route(startLocation1, endLocation1, "route A")
+const startLocation2 = new Location("start location 2");
+const endLocation2 = new Location("end location 2");
+const routeB = new Route(startLocation2, endLocation2, "route B")
+const routeC = new Route(startLocation1, endLocation2, "route C")
 
   beforeEach(() => {
     TestBed.configureTestingModule({providers: [{
-      provide: RouteSelectionServiceService, useValue: new RouteSelectionServiceService(new InMemoryRouteConfig([routeA]))
+      provide: RouteSelectionServiceService, useValue: new RouteSelectionServiceService(new InMemoryRouteConfig([routeA, routeB, routeC]))
     }]});
   });
 
@@ -24,27 +28,33 @@ const routeA = new Route(startLocation, endLocation, "route A")
 
   it('should return a route when given a location', () => {
     const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
-    const route = service.getRoute(startLocation);
+    const route = service.getRoute(startLocation1);
     expect(route).toBeDefined();
   });
 
   it('should return a route where the given location is the equal to the start', () => {
     const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
-    const route = service.getRoute(startLocation);
-    expect(route.start).toEqual(startLocation);
+    const route = service.getRoute(startLocation1);
+    expect(route.start).toEqual(startLocation1);
   });
 
   it('should return a route where start and destination match the passed locations', () => {
     const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
-    const route = service.getRoute(startLocation, endLocation);
-    expect(route.start).toEqual(startLocation);
-    expect(route.destination).toEqual(endLocation);
+    const route = service.getRoute(startLocation1, endLocation2);
+    expect(route.start).toEqual(startLocation1);
+    expect(route.destination).toEqual(endLocation2);
   });
 
   it('should return a route with a destination', () => {
     const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
-    const route = service.getRoute(startLocation);
+    const route = service.getRoute(startLocation1);
     expect(route.destination).toBeDefined();
+  });
+
+  it('should not always return the first route in the configuration', () => {
+    const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
+    const route = service.getRoute(startLocation2);
+    expect(route.destination).toEqual(endLocation2);
   });
 
   it('should return a route from the current configuration', () => {
