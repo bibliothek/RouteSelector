@@ -1,7 +1,7 @@
 import { Route } from "./route";
 import { Location } from './location';
 
-export interface IRouteSelectionService {
+export interface RouteSelectionService {
 
     getRoute(start: Location) : Route;
     
