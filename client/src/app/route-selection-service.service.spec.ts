@@ -7,18 +7,20 @@ import { Route } from './route';
 
 describe('RouteSelectionServiceService', () => {
 
-const startLocation1 = new Location("start location 1");
-const endLocation1 = new Location("end location 1");
-const routeA = new Route(startLocation1, endLocation1, "route A")
-const startLocation2 = new Location("start location 2");
-const endLocation2 = new Location("end location 2");
-const routeB = new Route(startLocation2, endLocation2, "route B")
-const routeC = new Route(startLocation1, endLocation2, "route C")
+  const startLocation1 = new Location("start location 1");
+  const endLocation1 = new Location("end location 1");
+  const routeA = new Route(startLocation1, endLocation1, "route A")
+  const startLocation2 = new Location("start location 2");
+  const endLocation2 = new Location("end location 2");
+  const routeB = new Route(startLocation2, endLocation2, "route B")
+  const routeC = new Route(startLocation1, endLocation2, "route C")
 
   beforeEach(() => {
-    TestBed.configureTestingModule({providers: [{
-      provide: RouteSelectionServiceService, useValue: new RouteSelectionServiceService(new InMemoryRouteConfig([routeA, routeB, routeC]))
-    }]});
+    TestBed.configureTestingModule({
+      providers: [{
+        provide: RouteSelectionServiceService, useValue: new RouteSelectionServiceService(new InMemoryRouteConfig([routeA, routeB, routeC]))
+      }]
+    });
   });
 
   it('should be created', () => {
@@ -49,6 +51,15 @@ const routeC = new Route(startLocation1, endLocation2, "route C")
     const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
     const route = service.getRoute(startLocation1);
     expect(route.destination).toBeDefined();
+  });
+
+  it('should throw an exception when no fitting route is found', () => {
+    const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
+    try { const route = service.getRoute(new Location("not exist")); }
+    catch (e) {
+      expect(e).toBeDefined();
+      expect(e.message).toEqual("No fitting route found");
+    }
   });
 
   it('should not always return the first route in the configuration', () => {

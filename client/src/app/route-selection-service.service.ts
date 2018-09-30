@@ -15,12 +15,18 @@ routeConfig: RouteConfig;
   getRoute(start: Location, destination: Location): Route;
   getRoute(start: Location, destination?: Location): Route {
     const routes = this.routeConfig.getRoutes();
-    let filteredRoutes;
+    let filteredRoutes: Array<Route>;
     if(destination) {
       filteredRoutes = routes.filter((route)=> route && route.start == start && route.destination == destination)
     } else {
       filteredRoutes = routes.filter((route)=> route && route.start == start)
     }
+
+if(filteredRoutes.length < 1) {
+  throw new Error("No fitting route found");
+  
+}
+
     return filteredRoutes[0];
   }
 
