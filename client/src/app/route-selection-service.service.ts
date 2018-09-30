@@ -15,7 +15,8 @@ routeConfig: RouteConfig;
   getRoute(start: Location, destination: Location): Route;
   getRoute(start: Location, destination?: Location): Route {
     const routes = this.routeConfig.getRoutes();
-    return routes[0];
+    const filteredRoutes = routes.filter((route)=> route && route.start == start)
+    return filteredRoutes[0];
   }
 
 
