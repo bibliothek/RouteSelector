@@ -6,4 +6,10 @@ export class Route {
     destination: Location;
     name: string;
 
+    constructor(start?: Location, destination?: Location, name?: string) {
+        this.start = start;
+        this.destination = destination;
+        this.name = name;
+    }
+
 }
