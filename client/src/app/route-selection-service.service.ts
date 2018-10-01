@@ -31,6 +31,11 @@ export class RouteSelectionServiceService implements RouteSelectionService {
 
     return this.routeSelector.selectRoute(filteredRoutes);
   }
+  getStartLocations(): Location[] {
+    const routes = this.routeConfig.getRoutes();
+    const startLocations = routes.map(x=>x.start).filter((value, i, array)=> array.indexOf(value) === i);
+    return startLocations;
+  }
 
   constructor(routeConfig: RouteConfig, routeSelector: RouteSelector) {
     this.routeConfig = routeConfig;

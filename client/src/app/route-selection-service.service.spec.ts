@@ -77,6 +77,12 @@ describe('RouteSelectionServiceService', () => {
     expect(route.destination).toEqual(endLocation2);
   });
 
+  it('should return all possible start locations', () => {
+    const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
+    const locations = service.getStartLocations();
+    expect(locations.length).toEqual(2);
+  });
+
   it('should return a route from the current configuration', () => {
     const location = new Location("start");
     const config = new InMemoryRouteConfig([new Route(location, location, 'name')]);
