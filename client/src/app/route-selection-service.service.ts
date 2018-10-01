@@ -12,16 +12,22 @@ export class RouteSelectionServiceService implements RouteSelectionService {
 
   routeConfig: RouteConfig;
   routeSelector: RouteSelector;
+  routes: Route[];
+
+  constructor(routeConfig: RouteConfig, routeSelector: RouteSelector) {
+    this.routeConfig = routeConfig;
+    this.routeSelector = routeSelector;
+    this.routes = routeConfig.getRoutes();
+  }
 
   getRoute(start: Location): Route;
   getRoute(start: Location, destination: Location): Route;
   getRoute(start: Location, destination?: Location): Route {
-    const routes = this.routeConfig.getRoutes();
     let filteredRoutes: Array<Route>;
     if (destination) {
-      filteredRoutes = routes.filter((route) => route && route.start == start && route.destination == destination)
+      filteredRoutes = this.routes.filter((route) => route && route.start == start && route.destination == destination)
     } else {
-      filteredRoutes = routes.filter((route) => route && route.start == start)
+      filteredRoutes = this.routes.filter((route) => route && route.start == start)
     }
 
     if (filteredRoutes.length < 1) {
@@ -31,15 +37,18 @@ export class RouteSelectionServiceService implements RouteSelectionService {
 
     return this.routeSelector.selectRoute(filteredRoutes);
   }
+  getDestinations(start: Location): Location[] {
+    const destinations = this.routes.filter((v, i, a) => v.start === start).map(x => x.destination).filter(this.onlyUnique);
+    return destinations;
+  }
+
   getStartLocations(): Location[] {
-    const routes = this.routeConfig.getRoutes();
-    const startLocations = routes.map(x=>x.start).filter((value, i, array)=> array.indexOf(value) === i);
+    const startLocations = this.routes.map(x => x.start).filter(this.onlyUnique);
     return startLocations;
   }
 
-  constructor(routeConfig: RouteConfig, routeSelector: RouteSelector) {
-    this.routeConfig = routeConfig;
-    this.routeSelector = routeSelector;
+  private onlyUnique(value, index, self): boolean {
+    return self.indexOf(value) === index;
   }
 
 }
