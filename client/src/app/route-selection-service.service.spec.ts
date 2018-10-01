@@ -33,38 +33,38 @@ describe('RouteSelectionServiceService', () => {
 
   it('should return a route when given a location', () => {
     const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
-    const route = service.getRoute(startLocation1);
+    const route = service.getAnyRoute(startLocation1);
     expect(route).toBeDefined();
   });
 
   it('should return a route where the given location is the equal to the start', () => {
     const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
-    const route = service.getRoute(startLocation1);
+    const route = service.getAnyRoute(startLocation1);
     expect(route.start).toEqual(startLocation1);
   });
 
   it('should return a route where start and destination match the passed locations', () => {
     const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
-    const route = service.getRoute(startLocation1, endLocation2);
+    const route = service.getAnyRoute(startLocation1, endLocation2);
     expect(route.start).toEqual(startLocation1);
     expect(route.destination).toEqual(endLocation2);
   });
 
   it('should return a route with a destination', () => {
     const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
-    const route = service.getRoute(startLocation1);
+    const route = service.getAnyRoute(startLocation1);
     expect(route.destination).toBeDefined();
   });
 
   it('if more than one route is possible it should return one based on the selector', () => {
     const service: RouteSelectionServiceService = new RouteSelectionServiceService(routeConfig, new IndexRouteSelector(1));
-    const route = service.getRoute(startLocation1);
+    const route = service.getAnyRoute(startLocation1);
     expect(route.destination).toEqual(endLocation2);
   });
 
   it('should throw an exception when no fitting route is found', () => {
     const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
-    try { const route = service.getRoute(new Location("not exist")); }
+    try { const route = service.getAnyRoute(new Location("not exist")); }
     catch (e) {
       expect(e).toBeDefined();
       expect(e.message).toEqual("No fitting route found");
@@ -73,7 +73,7 @@ describe('RouteSelectionServiceService', () => {
 
   it('should not always return the first route in the configuration', () => {
     const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
-    const route = service.getRoute(startLocation2);
+    const route = service.getAnyRoute(startLocation2);
     expect(route.destination).toEqual(endLocation2);
   });
 
@@ -93,7 +93,7 @@ describe('RouteSelectionServiceService', () => {
     const location = new Location("start");
     const config = new InMemoryRouteConfig([new Route(location, location, 'name')]);
     const service: RouteSelectionServiceService = new RouteSelectionServiceService(config, new IndexRouteSelector(0));
-    const route = service.getRoute(location);
+    const route = service.getAnyRoute(location);
     expect(config.getRoutes().includes(route)).toBeTruthy();
   });
 
