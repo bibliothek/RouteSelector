@@ -89,6 +89,12 @@ describe('RouteSelectionServiceService', () => {
     expect(destinations.length).toEqual(2);
   });
 
+  it('should return all possible routes from a given start location', () => {
+    const service: RouteSelectionServiceService = TestBed.get(RouteSelectionServiceService);
+    const routes = service.getRoutes(startLocation1);
+    expect(routes.length).toEqual(2);
+  });
+
   it('should return a route from the current configuration', () => {
     const location = new Location("start");
     const config = new InMemoryRouteConfig([new Route(location, location, 'name')]);
