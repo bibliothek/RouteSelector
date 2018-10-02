@@ -42,8 +42,13 @@ export class RouteSelectionServiceService implements RouteSelectionService {
     return destinations;
   }
 
-  getRoutes(start: Location): Route[] {
-    return this.routes.filter((v,i,a) => v.start === start);
+  getRoutes(start: Location): Route[];
+  getRoutes(start: Location, destination: Location): Route[];
+  getRoutes(start: Location, destination?: Location): Route[] {
+    if (destination) {
+      return this.routes.filter((v, i, a) => v.start === start && v.destination === destination);
+    }
+    return this.routes.filter((v, i, a) => v.start === start);
   }
 
   getStartLocations(): Location[] {

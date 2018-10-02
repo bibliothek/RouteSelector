@@ -12,4 +12,6 @@ export interface RouteSelectionService {
     getDestinations(start: Location): Location[];
     
     getRoutes(start: Location): Route[];
+    
+    getRoutes(start: Location, destination: Location): Route[];
 }
