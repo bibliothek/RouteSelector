@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { RouteSelectionService } from './route-selection-service'
 import { Route } from './route';
 import { Location } from './location';
 import { RouteConfig } from './route-config';
@@ -8,7 +7,7 @@ import { RouteSelector } from './route-selector';
 @Injectable({
   providedIn: 'root'
 })
-export class RouteSelectionServiceService implements RouteSelectionService {
+export class RouteSelectionService {
 
   routeConfig: RouteConfig;
   routeSelector: RouteSelector;
