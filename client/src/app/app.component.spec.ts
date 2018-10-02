@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouteConfig } from './service/route-selection/route-config';
-import { MatreiRouteConfig } from './config/matrei-route-config';
+import { ExampleRouteConfig } from './config/example-route-config';
 import { RouteSelector } from './service/route-selection/route-selector';
 import { RandomRouteSelector } from './service/route-selection/random-route-selector';
 describe('AppComponent', () => {
@@ -10,7 +10,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      providers: [{ provide: RouteConfig, useClass: MatreiRouteConfig },{ provide: RouteSelector, useClass: RandomRouteSelector }]
+      providers: [{ provide: RouteConfig, useClass: ExampleRouteConfig },{ provide: RouteSelector, useClass: RandomRouteSelector }]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

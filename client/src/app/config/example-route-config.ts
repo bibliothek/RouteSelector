@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 @Injectable({
     providedIn: 'root'
   })
-export class MatreiRouteConfig extends RouteConfig{
+export class ExampleRouteConfig extends RouteConfig{
     getRoutes(): Route[] {
         const startLocation1 = new Location("start location 1");
         const endLocation1 = new Location("end location 1");
