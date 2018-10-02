@@ -1,5 +1,8 @@
 import { Route } from "./route";
-
-export interface RouteSelector {
-    selectRoute(routes: Array<Route>): Route;
+import { Injectable } from "@angular/core";
+@Injectable({
+    providedIn: 'root'
+  })
+export abstract class RouteSelector {
+    abstract selectRoute(routes: Array<Route>): Route;
 }

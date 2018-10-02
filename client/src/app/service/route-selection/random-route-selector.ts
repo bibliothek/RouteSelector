@@ -1,8 +1,11 @@
 import { RouteSelector } from "./route-selector";
 import { Route } from "./route";
-
-export class RandomRouteSelector implements RouteSelector {
-    selectRoute(routes:Route[]): Route {
+import { Injectable } from "@angular/core";
+@Injectable({
+    providedIn: 'root'
+})
+export class RandomRouteSelector extends RouteSelector {
+    selectRoute(routes: Route[]): Route {
         const index = this.getRandomInt(0, routes.length - 1);
         return routes[index];
     }

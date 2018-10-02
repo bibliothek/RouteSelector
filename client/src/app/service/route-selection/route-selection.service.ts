@@ -9,12 +9,10 @@ import { RouteSelector } from './route-selector';
 })
 export class RouteSelectionService {
 
-  routeConfig: RouteConfig;
   routeSelector: RouteSelector;
   routes: Route[];
 
   constructor(routeConfig: RouteConfig, routeSelector: RouteSelector) {
-    this.routeConfig = routeConfig;
     this.routeSelector = routeSelector;
     this.routes = routeConfig.getRoutes();
   }

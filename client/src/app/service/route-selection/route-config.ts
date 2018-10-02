@@ -1,5 +1,9 @@
 import { Route } from "./route";
+import { Injectable } from "@angular/core";
 
-export interface RouteConfig {
-    getRoutes(): Array<Route>;
+@Injectable({
+    providedIn: 'root'
+  })
+export abstract class RouteConfig {
+    abstract getRoutes(): Array<Route>;
 }

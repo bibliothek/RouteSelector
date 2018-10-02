@@ -3,4 +3,9 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+  <ul>
+    <li *ngFor="let location of this.routeService.getStartLocations()">
+      {{location.name}}
+    </li>
+  </ul>
 </div>

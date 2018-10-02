@@ -1,9 +1,10 @@
 import { RouteConfig } from "./route-config";
 import {Route} from "./route";
 
-export class InMemoryRouteConfig implements RouteConfig {
+export class InMemoryRouteConfig extends RouteConfig {
 
 constructor(routes: Array<Route>) {
+    super();
     this.routes = routes;
 }
 
