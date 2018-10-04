@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouteSelectionService } from '../service/route-selection/route-selection.service';
 
 @Component({
   selector: 'app-start-selection',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartSelectionComponent implements OnInit {
 
-  constructor() { }
+  routeService;
+
+  constructor(routeService: RouteSelectionService) {
+    this.routeService = routeService;
+  }
 
   ngOnInit() {
   }

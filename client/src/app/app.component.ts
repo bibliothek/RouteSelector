@@ -8,10 +8,5 @@ import { RouteSelectionService } from './service/route-selection/route-selection
 })
 export class AppComponent {
   title = 'client';
-  routeService;
-
-  constructor(routeService: RouteSelectionService) {
-    this.routeService = routeService;
-  }
 
 }
