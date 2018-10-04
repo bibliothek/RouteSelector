@@ -17,4 +17,8 @@ export class StartSelectionComponent implements OnInit {
   ngOnInit() {
   }
 
+  locationSelected(location: Location): void {
+    console.log(location);
+  }
+
 }
