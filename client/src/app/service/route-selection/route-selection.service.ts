@@ -18,7 +18,7 @@ export class RouteSelectionService {
   }
 
   getAnyRoute(start: Location): Route;
-  getAnyRoute(start: Location, destination: Location): Route;
+  getAnyRoute(start: Location, destination: Location): Route ;
   getAnyRoute(start: Location, destination?: Location): Route {
     let filteredRoutes: Array<Route>;
     if (destination) {
@@ -28,7 +28,7 @@ export class RouteSelectionService {
     }
 
     if (filteredRoutes.length < 1) {
-      throw new Error("No fitting route found");
+      throw new Error('No fitting route found');
 
     }
 
@@ -40,7 +40,7 @@ export class RouteSelectionService {
   }
 
   getRoutes(start: Location): Route[];
-  getRoutes(start: Location, destination: Location): Route[];
+  getRoutes(start: Location, destination: Location): Route[] ;
   getRoutes(start: Location, destination?: Location): Route[] {
     if (destination) {
       return this.routes.filter((v, i, a) => v.start === start && v.destination === destination);

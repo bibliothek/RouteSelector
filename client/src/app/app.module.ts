@@ -23,7 +23,7 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [{ provide: RouteConfig, useClass: ExampleRouteConfig },{ provide: RouteSelector, useClass: RandomRouteSelector }],
+  providers: [{ provide: RouteConfig, useClass: ExampleRouteConfig }, { provide: RouteSelector, useClass: RandomRouteSelector }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

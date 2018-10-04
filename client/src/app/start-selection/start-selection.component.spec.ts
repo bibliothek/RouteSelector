@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StartSelectionComponent } from './start-selection.component';
+import { RouteConfig } from '../service/route-selection/route-config';
+import { ExampleRouteConfig } from '../config/example-route-config';
+import { RouteSelector } from '../service/route-selection/route-selector';
+import { RandomRouteSelector } from '../service/route-selection/random-route-selector';
 
 describe('StartSelectionComponent', () => {
   let component: StartSelectionComponent;
@@ -8,7 +12,8 @@ describe('StartSelectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StartSelectionComponent ]
+      declarations: [ StartSelectionComponent ],
+      providers: [{ provide: RouteConfig, useClass: ExampleRouteConfig }, { provide: RouteSelector, useClass: RandomRouteSelector }]
     })
     .compileComponents();
   }));

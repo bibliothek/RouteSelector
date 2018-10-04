@@ -9,13 +9,13 @@ import { RandomRouteSelector } from './random-route-selector';
 
 describe('RouteSelectionServiceService', () => {
 
-  const startLocation1 = new Location("start location 1");
-  const endLocation1 = new Location("end location 1");
-  const routeA = new Route(startLocation1, endLocation1, "route A")
-  const startLocation2 = new Location("start location 2");
-  const endLocation2 = new Location("end location 2");
-  const routeB = new Route(startLocation2, endLocation2, "route B")
-  const routeC = new Route(startLocation1, endLocation2, "route C")
+  const startLocation1 = new Location('start location 1');
+  const endLocation1 = new Location('end location 1');
+  const routeA = new Route(startLocation1, endLocation1, 'route A');
+  const startLocation2 = new Location('start location 2');
+  const endLocation2 = new Location('end location 2');
+  const routeB = new Route(startLocation2, endLocation2, 'route B');
+  const routeC = new Route(startLocation1, endLocation2, 'route C');
   const routeConfig = new InMemoryRouteConfig([routeA, routeB, routeC]);
 
   beforeEach(() => {
@@ -64,10 +64,9 @@ describe('RouteSelectionServiceService', () => {
 
   it('should throw an exception when no fitting route is found', () => {
     const service: RouteSelectionService = TestBed.get(RouteSelectionService);
-    try { const route = service.getAnyRoute(new Location("not exist")); }
-    catch (e) {
+    try { const route = service.getAnyRoute(new Location('not exist')); } catch (e) {
       expect(e).toBeDefined();
-      expect(e.message).toEqual("No fitting route found");
+      expect(e.message).toEqual('No fitting route found');
     }
   });
 
@@ -94,7 +93,7 @@ describe('RouteSelectionServiceService', () => {
     const routes = service.getRoutes(startLocation1);
     expect(routes.length).toEqual(2);
   });
-  
+
   it('should return all possible routes from a given start and end location', () => {
     const service: RouteSelectionService = TestBed.get(RouteSelectionService);
     const routes = service.getRoutes(startLocation1, endLocation2);
@@ -103,7 +102,7 @@ describe('RouteSelectionServiceService', () => {
   });
 
   it('should return a route from the current configuration', () => {
-    const location = new Location("start");
+    const location = new Location('start');
     const config = new InMemoryRouteConfig([new Route(location, location, 'name')]);
     const service: RouteSelectionService = new RouteSelectionService(config, new IndexRouteSelector(0));
     const route = service.getAnyRoute(location);
