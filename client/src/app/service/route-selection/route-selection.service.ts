@@ -17,8 +17,6 @@ export class RouteSelectionService {
     this.routes = routeConfig.getRoutes();
   }
 
-  getAnyRoute(start: Location): Route;
-  getAnyRoute(start: Location, destination: Location): Route ;
   getAnyRoute(start: Location, destination?: Location): Route {
     let filteredRoutes: Array<Route>;
     if (destination) {
@@ -39,8 +37,6 @@ export class RouteSelectionService {
     return destinations;
   }
 
-  getRoutes(start: Location): Route[];
-  getRoutes(start: Location, destination: Location): Route[] ;
   getRoutes(start: Location, destination?: Location): Route[] {
     if (destination) {
       return this.routes.filter((v, i, a) => v.start === start && v.destination === destination);
