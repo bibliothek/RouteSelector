@@ -20,9 +20,9 @@ export class RouteSelectionService {
   getAnyRoute(start: Location, destination?: Location): Route {
     let filteredRoutes: Array<Route>;
     if (destination) {
-      filteredRoutes = this.routes.filter((route) => route && route.start == start && route.destination == destination)
+      filteredRoutes = this.routes.filter((route) => route && route.start === start && route.destination === destination);
     } else {
-      filteredRoutes = this.routes.filter((route) => route && route.start == start)
+      filteredRoutes = this.routes.filter((route) => route && route.start === start);
     }
 
     if (filteredRoutes.length < 1) {

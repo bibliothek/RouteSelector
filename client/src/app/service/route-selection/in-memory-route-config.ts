@@ -1,5 +1,5 @@
-import { RouteConfig } from "./route-config";
-import {Route} from "./route";
+import { RouteConfig } from './route-config';
+import {Route} from './route';
 
 export class InMemoryRouteConfig extends RouteConfig {
 
