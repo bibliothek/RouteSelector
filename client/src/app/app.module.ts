@@ -8,16 +8,19 @@ import { RandomRouteSelector } from './service/route-selection/random-route-sele
 import { RouteConfig } from './service/route-selection/route-config';
 import { RouteSelector } from './service/route-selection/route-selector';
 import { StartSelectionComponent } from './start-selection/start-selection.component';
+import { LocationComponent } from './location/location.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/start', pathMatch: 'full'},
-  {path: 'start', component: StartSelectionComponent}
+  {path: 'start', component: StartSelectionComponent},
+  {path: 'location/:name', component: LocationComponent},
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartSelectionComponent
+    StartSelectionComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,

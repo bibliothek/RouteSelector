@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { RouteSelectionService } from '../service/route-selection/route-selection.service';
 
@@ -15,10 +16,6 @@ export class StartSelectionComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  locationSelected(location: Location): void {
-    console.log(location);
   }
 
 }

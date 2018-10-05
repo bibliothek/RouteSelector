@@ -5,6 +5,7 @@ import { RouteConfig } from '../service/route-selection/route-config';
 import { ExampleRouteConfig } from '../config/example-route-config';
 import { RouteSelector } from '../service/route-selection/route-selector';
 import { RandomRouteSelector } from '../service/route-selection/random-route-selector';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('StartSelectionComponent', () => {
   let component: StartSelectionComponent;
@@ -12,10 +13,14 @@ describe('StartSelectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StartSelectionComponent ],
-      providers: [{ provide: RouteConfig, useClass: ExampleRouteConfig }, { provide: RouteSelector, useClass: RandomRouteSelector }]
+      imports: [RouterTestingModule],
+      declarations: [StartSelectionComponent],
+      providers: [
+        { provide: RouteConfig, useClass: ExampleRouteConfig },
+        { provide: RouteSelector, useClass: RandomRouteSelector },
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
