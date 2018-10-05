@@ -90,13 +90,13 @@ describe('RouteSelectionServiceService', () => {
 
   it('should return all possible routes from a given start location', () => {
     const service: RouteSelectionService = TestBed.get(RouteSelectionService);
-    const routes = service.getRoutes(startLocation1);
+    const routes = service.getRoutes(startLocation1.name);
     expect(routes.length).toEqual(2);
   });
 
   it('should return all possible routes from a given start and end location', () => {
     const service: RouteSelectionService = TestBed.get(RouteSelectionService);
-    const routes = service.getRoutes(startLocation1, endLocation2);
+    const routes = service.getRoutes(startLocation1.name, endLocation2.name);
     expect(routes.length).toEqual(1);
     expect(routes[0]).toEqual(routeC);
   });

@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/start', pathMatch: 'full'},
   {path: 'start', component: StartSelectionComponent},
   {path: 'location/:name', component: LocationComponent},
-  {path: 'route/:start/:end', component: ConnectionComponent},
+  {path: 'connection/:start/:end', component: ConnectionComponent},
 ];
 
 @NgModule({

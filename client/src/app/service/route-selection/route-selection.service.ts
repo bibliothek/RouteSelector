@@ -37,11 +37,11 @@ export class RouteSelectionService {
     return destinations;
   }
 
-  getRoutes(start: Location, destination?: Location): Route[] {
-    if (destination) {
-      return this.routes.filter((v, i, a) => v.start === start && v.destination === destination);
+  getRoutes(startName: string, destinationName?: string): Route[] {
+    if (destinationName) {
+      return this.routes.filter((v, i, a) => v.start.name === startName && v.destination.name === destinationName);
     }
-    return this.routes.filter((v, i, a) => v.start === start);
+    return this.routes.filter((v, i, a) => v.start.name === startName);
   }
 
   getStartLocations(): Location[] {
