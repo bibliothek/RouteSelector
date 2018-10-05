@@ -84,7 +84,7 @@ describe('RouteSelectionServiceService', () => {
 
   it('should return all possible destinations from a given start location', () => {
     const service: RouteSelectionService = TestBed.get(RouteSelectionService);
-    const destinations = service.getDestinations(startLocation1);
+    const destinations = service.getDestinations(startLocation1.name);
     expect(destinations.length).toEqual(2);
   });
 

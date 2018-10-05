@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteSelectionService } from '../service/route-selection/route-selection.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '../service/route-selection/location';
 
 @Component({
   selector: 'app-location',
@@ -18,6 +19,10 @@ export class LocationComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getDestinations(): Location[] {
+    return this.routeService.getDestinations(this.locationName);
   }
 
 }

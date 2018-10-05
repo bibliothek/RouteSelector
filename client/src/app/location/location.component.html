@@ -1,3 +1,3 @@
-<p>
-  {{this.locationName}}
-</p>
+<div *ngFor="let location of this.getDestinations()">
+  <button routerLink="/location/{{location.name}}">{{location.name}}</button>
+</div>

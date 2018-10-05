@@ -32,8 +32,8 @@ export class RouteSelectionService {
 
     return this.routeSelector.selectRoute(filteredRoutes);
   }
-  getDestinations(start: Location): Location[] {
-    const destinations = this.routes.filter((v, i, a) => v.start === start).map(x => x.destination).filter(this.onlyUnique);
+  getDestinations(startName: string): Location[] {
+    const destinations = this.routes.filter((v, i, a) => v.start.name === startName).map(x => x.destination).filter(this.onlyUnique);
     return destinations;
   }
 
