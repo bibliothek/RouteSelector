@@ -9,18 +9,21 @@ import { RouteConfig } from './service/route-selection/route-config';
 import { RouteSelector } from './service/route-selection/route-selector';
 import { StartSelectionComponent } from './start-selection/start-selection.component';
 import { LocationComponent } from './location/location.component';
+import { RouteComponent } from './route/route.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/start', pathMatch: 'full'},
   {path: 'start', component: StartSelectionComponent},
   {path: 'location/:name', component: LocationComponent},
+  {path: 'route/:start/:end', component: RouteComponent},
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     StartSelectionComponent,
-    LocationComponent
+    LocationComponent,
+    RouteComponent
   ],
   imports: [
     BrowserModule,
